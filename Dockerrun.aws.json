@@ -1,0 +1,13 @@
+{
+    "AWSEBDockerrunVersion" : "1",
+    "Image" : {
+        "Name" : "atgeorge11/fec_carousel",
+        "Update" : "true"
+    },
+    "Ports" : [
+        {
+            "ContainerPort" : "3001"
+        }
+    ],
+    "Logging" : "/var/log/nginx"
+}

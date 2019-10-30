@@ -1,0 +1,209 @@
+@media only screen and (min-width: 601px) {
+    #box {
+        position: fixed;
+        left: 140px;
+    }   
+
+    #carouselWrapper {
+        position: absolute;
+        width: 1031.06px;
+        height: 660px;
+        overflow: hidden;
+    }
+    
+    .carouselShifter {
+        position: absolute;
+        top: 170px;
+        border: none;
+        background-color: SteelBlue;
+        color: white;
+        opacity: .9;
+        font-size: 20px;
+        height: 85px;
+        width: 35px;
+    }
+    
+    .carouselShifter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .carouselEntry {
+        position: absolute;
+        display: inline-block;
+        width: 225px;
+        height: 440px;
+    }
+    
+    .carouselPhoto {
+        position: absolute;
+        object-fit: cover;
+        top: 0px;
+        height: 225px;
+        width: 225px;
+    }
+    
+    .carouselPhoto:hover {
+        cursor: pointer;
+    }
+    
+    .carouselTitle {
+        position: absolute;
+        top: 230px;
+        height: 45px;
+        font-family: "Arial", Helvetica, sans-serif;
+        color: #383838;
+    }
+
+    .carouselTitle:hover {
+        cursor: pointer;
+        color: blue;
+    }
+    
+    .carouselRating {
+        position: absolute;
+        top: 295px;
+        height: 50px;
+        color: #383838;
+    }
+    
+    .carouselPrice {
+        position: absolute;
+        font-family: "Arial", Helvetica, sans-serif;
+        color: #383838;
+        top: 325px;
+        height: 50px;
+    }
+
+    .carouselButton {
+        position: absolute;
+        background-color: green;
+        color: white;
+        font-size: 15px;
+        top: 395px;
+        height: 45px;
+        width: 225px;
+    }
+
+    .carouselButton:hover {
+        cursor: pointer;
+    }
+
+    .dotContainer {
+        position: absolute;
+        top: 525px;
+        left: 500px;
+        height: 10px;
+        text-align: center;
+    }
+}
+
+#carDivider {
+    font-family: "DIN Next",Helvetica,Arial,sans-serif;
+    color: #333;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.carouselButton:hover {
+    background-color: darkGreen;
+}
+
+.emptyStars {
+    position: absolute;
+    color:#383838;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.filledInStars {
+    position: absolute;
+    overflow: hidden;
+    color: #383838;
+}
+
+.dotSubContainer {
+    display: inline-block;
+}
+
+.dot {
+    position: absolute;
+    background-color: gray;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #box {
+        position: fixed;
+        left: 2vw;
+        width: 96vw;
+    }
+
+    #carousel {
+        position: absolute;
+        width: 100%;
+        height: 60vw;
+        overflow: hidden;
+    }
+
+    .carouselShifter {
+        visibility: hidden;
+    }
+
+    .carouselEntry {
+        position: absolute;
+        display: inline-block;
+        width: 29vw;
+        height: 46vw;
+        text-align: center;
+    }
+    
+    .carouselPhoto {
+        position: absolute;
+        object-fit: cover;
+        top: 0px;
+        height: 29vw;
+        width: 29vw;
+        display: inline-block;
+    }
+    
+    .carouselTitle {
+        position: absolute;
+        font-family: "Arial", Helvetica, sans-serif;
+        font-size: 10px;
+        top: 30vw;
+        height: 8.5vw;
+        width: 29vw;
+        color: #383838;
+    }
+    
+    .carouselRating {
+        position: absolute;
+        top: 40vw;
+        color: #383838;
+    }
+    
+    .carouselPrice {
+        visibility: hidden;
+    }
+
+    .carouselButton {
+        visibility: hidden;
+    }
+
+    .dotContainer {
+        position: absolute;
+        top: 48vw;
+        left: 40vw;
+        height: 10px;
+        text-align: center;
+    }
+}

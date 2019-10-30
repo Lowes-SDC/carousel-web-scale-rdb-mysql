@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Stain Glass",
+        "price": 25.99,
+        "rating": 4.5,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/1/Stain+Glass.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Broken Stain Glass",
+        "price": 30.78,
+        "rating": 2.7,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/2/Broken+Stain+Glass.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Broken Normal Glass",
+        "price": 2.45,
+        "rating": 3.3,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/3/Broken+Normal+Glass.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Axe in Door Door",
+        "price": 8.99,
+        "rating": 1.2,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/4/Axe+in+Door+Door.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Big Door",
+        "price": 199.00,
+        "rating": 3,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/5/Big+Door.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Trapdoor",
+        "price": 20.99,
+        "rating": 4.8,
+        "picture": "https://fec-hallowes.s3.amazonaws.com/6/Trapdoor.jpg"
+    }
+]
