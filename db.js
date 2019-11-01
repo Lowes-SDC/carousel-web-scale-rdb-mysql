@@ -1,42 +1,34 @@
-const mysql = require('mysql');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/carousel', {useNewUrlParser: true});
 
-let db = mysql.createConnection({
-    host: 'fec-hallowes-carousel.cgmhnhykd7qi.us-east-2.rds.amazonaws.com',
-    user: 'atgeorge11',
-    password: 'atgeorge11',
-    database: 'fec_hallowes_carousel'
-})
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected!');
+});
 
-db.connect(function (err) {
-    if (err) {
-        console.log('error: ' + err);
-        return;
-    }
-    console.log('Connected to database');
-})
 
-const getItems = function(itemId, callback) {
-    let queryString = "SELECT * FROM items WHERE categoryId = (SELECT categoryId FROM items WHERE id = ?);";
-    let options = [itemId];
-    db.query(queryString, options, (err, results, field) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, results);
-        }
-    })
-}
+const schema = new mongoose.Schema({
+    _id: Number,
+    Name: String,
+    Price: Number,
+    Rating: Number,
+    Reviews: Number,
+    Category: Number,
+    Picture: String
+});
+  
+const carItem = mongoose.model('carItem', schema);
 
-module.exports.getItems = getItems;
+var silence = new carItem({ ProductId: 1,
+  Name: "Mario",
+  Price: 1,
+  Rating: 1,
+  Reviews: 1,
+  Category: 1,
+  Picture: "url"
+ });
 
-// const getCategory = function (itemId, callback) {
-    //     let queryString = "SELECT categoryId FROM items WHERE id = ?;";
-    //     let options = [itemId];
-    //     db.query(queryString, options, (err, results, field) => {
-    //         if (err) {
-    //             callback (err, null);
-    //         } else {
-    //             callback (null, results);
-    //         }
-    //     })
-    // }
+ console.log(silence.name);
+  
+module.exports = { carItem };
