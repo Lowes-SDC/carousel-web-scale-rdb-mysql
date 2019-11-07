@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Motion, spring } from 'react-motion';
 import { Swipeable } from 'react-swipeable';
 import $ from 'jquery';
-import sampleData from '../../sampleData.json';
 import axios from 'axios';
 import "../../style.css";
 
@@ -20,11 +19,11 @@ class Carousel extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            items: sampleData,
+            items: [],
             currentPosition: 0,
-            maxPositions: Math.floor(sampleData.length / 2)
+            maxPositions: 0
         }
-        this.displayedItems = sampleData.slice(0, 6);
+        this.displayedItems = [];
     }
 
     moveLeft () {
@@ -90,49 +89,50 @@ class Carousel extends React.Component {
         window.dispatchEvent(event);
     }
 
-    changeItems (items, currentItemId) {
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].id === currentItemId) {
-                items.splice(i, 1);
+    changeItems (items, currentItem) {
+        let lists = items.rows;
+        if (currentItem) {
+            let gotoId = currentItem.id
+            for (let i = 0; i < lists.length; i++) {
+                if (lists[i].id === gotoId) {
+                    lists.splice(i, 1);
+                }
             }
         }
-        if (items.length > 10) {
-            let newStartingIndex = Math.floor(Math.random() * (items.length - 10));
-            items = items.slice(newStartingIndex, newStartingIndex + 10);
+        
+        if (lists.length > 10) {
+            let newStartingIndex = Math.floor(Math.random() * (lists.length - 10));
+            lists = lists.slice(newStartingIndex, newStartingIndex + 10);
         }
         this.setState({
-            items: items,
-            displayedItems: items.slice(0, 4),
+            items: lists,
+            displayedItems: lists.slice(0, 4),
             currentPosition: 0,
-            maxPositions: Math.floor(items.length / 2)
+            maxPositions: Math.floor(lists.length / 2)
         })
-        this.spawnDots(Math.floor(items.length / 2));
+        this.spawnDots(Math.floor(lists.length / 2));
         this.checkShifters(0);
     }
 
     componentDidMount () {
         window.addEventListener("changeItem", (e) => {
-            axios.post("http://feccarousel.us-east-2.elasticbeanstalk.com/items", {
-                itemId: e.detail
-            })
-            .then ((res) => {
-                this.changeItems(res.data, e.detail)
-            })
-            .catch ((err) => {
-                console.log(err);
-            })
+            axios.get(`/items?itemId=${e.detail.id}`)
+                .then (res => {
+                    this.changeItems(res.data, e.detail.id)
+                })
+                .catch ((err) => {
+                    console.log(err);
+                });
         })
 
-        axios.post("http://feccarousel.us-east-2.elasticbeanstalk.com/items", {
-            itemId: 99
-        })
-        .then ((res) => {
+        axios.get(`/items?itemId=9999999`)
+        .then (res => {
             this.changeItems(res.data);
         })
         .catch ((err) => {
             console.log("Uh-oh Spaghettios");
             console.log(err);
-        })
+        });
     }
 
     render() {

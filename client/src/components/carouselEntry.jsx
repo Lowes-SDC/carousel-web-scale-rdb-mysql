@@ -9,13 +9,13 @@ const CarouselEntry = props => {
             <img
                 src={props.item.picture}
                 className="carouselPhoto"
-                onClick={() => {props.changeItem(props.item.id)}}
+                onClick={() => {props.changeItem(props.item)}}
             ></img>
             <div
                 className="carouselTitle"
-                onClick={() => {props.changeItem(props.item.id)}}
+                onClick={() => {props.changeItem(props.item)}}
             >
-                <strong>{props.item.name}</strong>
+                <strong>{props.item.names}</strong>
             </div>
             <div className="carouselRating">
                 <div className="emptyStars">
@@ -24,7 +24,7 @@ const CarouselEntry = props => {
                     <span>&#9734;</span>
                     <span>&#9734;</span>
                     <span>&#9734;</span>
-                      ({props.item.numReviews})
+                      ({props.item.reviews})
                 </div>
                 <div className="filledInStars" style={{
                     width: ratingWidth

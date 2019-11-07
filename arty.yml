@@ -1,0 +1,9 @@
+config:
+  target: 'http://localhost:5555'
+  phases:
+    - duration: 240
+      arrivalRate: 1000
+scenarios:
+  - flow:
+    - get:
+        url: "/items/?itemId=9800000"

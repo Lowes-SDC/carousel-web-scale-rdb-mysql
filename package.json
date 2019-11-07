@@ -5,11 +5,13 @@
   "description": "Skip to content Search or jump to…",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon app.js",
+    "react": "webpack -d --watch",
+    "server": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "artymet": "artillery quick --count 5000 -n 1 http://localhost:5555/items?itemId=9800000",
+    "arty": "artillery run arty.yml",
     "seed": "node faker.js",
-    "mongo-seed": "mongoimport --db carousel --collection carItem --type csv --file C:/Users/dameo/Documents/Github/carousel-web-scale-nosql-mongodb/seed.csv --headline"
+    "mysql-seed": "COPY carousel(id,Names,Price,Rating,Reviews,Category,Picture) FROM 'C:/Users/dameo/Documents/Github/carousel-web-scale-rdb-mysql/seed.csv' DELIMITER ',' CSV HEADER;"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/styles": "^4.5.0",
+    "artillery": "^1.6.0-29",
     "axios": "^0.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -35,9 +38,11 @@
     "mdbreact": "^4.21.1",
     "mongoose": "^5.7.7",
     "mysql": "^2.17.1",
+    "newrelic": "^6.1.0",
     "node": "^12.12.0",
     "nodemon": "^1.19.3",
     "npm": "^6.12.0",
+    "pg": "^7.12.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-easy-swipe": "0.0.18",

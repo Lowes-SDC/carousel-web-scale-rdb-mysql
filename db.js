@@ -1,34 +1,31 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/carousel', {useNewUrlParser: true});
+const { Client } = require('pg');
+const env = require('./p.js');
 
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected!');
+const client = new Client({
+    host: env.host,
+    port: "7777",
+    user: env.user,
+    database: env.database,
+    password: env.password
 });
 
+client.connect()
+    .then(() => {
+    console.log('Connected!');
+    });
 
-const schema = new mongoose.Schema({
-    _id: Number,
-    Name: String,
-    Price: Number,
-    Rating: Number,
-    Reviews: Number,
-    Category: Number,
-    Picture: String
-});
-  
-const carItem = mongoose.model('carItem', schema);
 
-var silence = new carItem({ ProductId: 1,
-  Name: "Mario",
-  Price: 1,
-  Rating: 1,
-  Reviews: 1,
-  Category: 1,
-  Picture: "url"
- });
+// let rand = Math.floor(Math.random() * Math.floor(2));
+const group = (itemId, callback) => {
+    client.query(`SELECT id, Names, Price, Rating, Reviews, Picture FROM carousel WHERE category = 
+        (SELECT Category FROM carousel WHERE ID = ${itemId}) ORDER BY ID DESC
+        LIMIT 10`, (err, res) => {
+        if (err) {
+            callback(err, null)
+        } else {
+            callback(null, res);
+        }
+    });
+};
 
- console.log(silence.name);
-  
-module.exports = { carItem };
+module.exports = { group };
